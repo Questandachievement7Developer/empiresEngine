@@ -26,11 +26,6 @@ Alex & Alyx : uuuhhh,
 Alyx : I get the first part but the last one, its 
 
 
-# DeveloperNote! This will create structure ( see server-routine empires-server.exe Configuration block for further details )
-# Z:\RaiseTheEmpires\app # main server file
-# Z:\RaiseTheEmpires\userdocs # For save file initiation
-# To run it requires a ini files which only able to be generated using the setup file
-
 
 
 
