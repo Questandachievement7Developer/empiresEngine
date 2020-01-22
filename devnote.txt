@@ -1,0 +1,139 @@
+
+
+Some documentation
+
+Codename: EmpireWin64 Engine Project
+Win32_x86_64 Accelerated Program emulator written by Muddro ( Part of Questandachievement7Developer ) or Yuuta Kun 
+
+Aimed for use : 
+1. Games and Programs that runs on windows 7
+2. GPU Accelerated DirectX9 and OpenGL 2.1
+3. Multithreaded Games
+4. Windows only compiled game
+
+Conversation Between Alex, Alyx, and doc
+
+Alex: Wait is this equivalent to eltechs windows game emulator counterpart?
+Alyx: Aha you found me xd
+Alex: What
+Alex: Anyway this is an win64 Program emulator that have GPU acceleration Support Theoratically
+Alyx: sooo i could play Half life 3 then?
+Alex: What? HL3 Confirmed?!?!?!
+Alyx: jk
+Alex: Well doc said there is a limitation
+doc: ah yes this engine currently only support DirectX9 and openGL2.1 although it should be noted that the tcg multithreading also unstable due to the guest word is much bigger than the host aarch64
+Alex & Alyx : uuuhhh,
+Alyx : I get the first part but the last one, its 
+
+
+# DeveloperNote! This will create structure ( see server-routine empires-server.exe Configuration block for further details )
+# Z:\RaiseTheEmpires\app # main server file
+# Z:\RaiseTheEmpires\userdocs # For save file initiation
+# To run it requires a ini files which only able to be generated using the setup file
+
+
+
+
+
+
+
+
+
+
+
+
+For x64 container testing do
+emu64io = for x64 root dir
+systemd-nspawn -D ${emu64io} --boot -u root -M aaa
+
+
+Name folder runtime is aarch64Translate
+
+aarch64Sector
+Work
+- Chromium Flash pepper viewer
+- Qemu
+- Multithreaded Dynarec tcg
+
+x86_64Emu
+- Qemu
+- Wine empires-server
+- Networking
+
+
+
+
+
+
+
+==========================+++NOTE+++================================
+
+Compiler and Static Template is not included on redist version of this engine
+the reason is to prevent a premature or unbootable as a result of compiling in an incompatible environment
+
+The environment that its required is
+- x86_64 machine with linux host (NOT WSL (but you could try WSL2 though))
+- Have SuperUser access ( rooted )
+- Have Base x86_64 Extracted ( Reason it is removed due to storage saving )
+- Static sample
+
+
+
+
+
+
+
+OoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoFile Shrinking DocumentationOoOoOoOoOoOoOoOoOoOoOoOoOoOo
+empires-server data structure 1.5GB
+
+|-----------------------------------------------------------------------
+|			|	|					|
+| Code Bash Execution 	| Hash	| System file + Server 		|
+|			|	|					|
+|-----------------------------------------------------------------------
+ 
+Basically we can delete System File + Server if its already extracted by using fileshrinking logic
+
+empires-server data structure 2.7KB
+
+|-----------------------|
+|			|
+| Code Bash Execution 	|
+|			|
+|-----------------------|
+
+OoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoO
+
+Architechture
+
+----[Android Level]-----
+			|
+	Xserver	|
+        Termux 	|
+------------------------
+	   |^
+	   ||
+	   ||
+Termux	   ||XServer Display + Audio Data + gl4es
+	   ||
+	   ||
+	   V
+------[Proot aarch64 Archlinux]-----------
+					|
+	Window Manager ( OpenBox )     |      
+       Chromium + Pepper Flash 	|
+	Qemu Emulation x86_64		|
+	    gl4es 2.1			|
+------------------------------------------
+	   			   |^
+	   			   ||
+	   		           ||
+	   			   ||
+Emulate x86_64 + wine-staging	   ||Sending NetIO Data + VirtualGL comm
+	  			   ||
+	   			   V
+
+------[systemd x86_64Archlinux]-----------
+	      Virtualgl 		  |
+	Wine empires-server.exe          |      
+------------------------------------------
